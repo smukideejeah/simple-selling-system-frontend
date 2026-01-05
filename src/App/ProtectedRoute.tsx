@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Navigate } from "react-router";
-import useAuth from "../modules/auth/Auth.hook";
+import useAuth from "../providers/auth/Auth.hook";
 
 export default function ProtectedRoute({children}: {children: JSX.Element}){
     const auth = useAuth();

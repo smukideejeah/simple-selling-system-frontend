@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
-import AuthUi from "../modules/auth/Auth.ui";
+import AuthUi from "../modules/login/Login.ui";
 import ProtectedRoute from "./ProtectedRoute";
+import AppLayout from "./AppLayout";
 
 const Router = createBrowserRouter([
     {
@@ -9,7 +10,10 @@ const Router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <ProtectedRoute><h1>Home Protected</h1></ProtectedRoute>
+        element: <ProtectedRoute><AppLayout /></ProtectedRoute>,
+        children: [
+            {path: "products", element: <div>Productos</div>}
+        ]
     }
 ]);
 

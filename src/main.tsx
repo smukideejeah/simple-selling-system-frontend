@@ -1,11 +1,15 @@
 import { createRoot } from "react-dom/client";
-import { AuthProvider } from "./modules/auth/Auth.provider";
-import { RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./providers/auth/Auth.provider";
 import Router from "./App/Router";
+import { RouterProvider } from "react-router";
+import ThemeProvider from "./providers/theme/theme.provider";
+import "./index.css";
 
 
 createRoot(document.getElementById('root')!).render(
   <AuthProvider>
-    <RouterProvider router={Router} />
+    <ThemeProvider>
+      <RouterProvider router={Router} />
+    </ThemeProvider>
   </AuthProvider>
 );
