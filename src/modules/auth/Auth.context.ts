@@ -4,6 +4,7 @@ type AuthContextType = {
     token: string | null;
     userId: string | null;
     role: string | null;
+    error: string | null;
     login: (Username: string, Password: string) => Promise<void>;
     logout: () => void;
 };

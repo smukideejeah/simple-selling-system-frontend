@@ -1,24 +1,25 @@
-import { Button, Form, Input, Card } from 'antd';
+import { Button, Form, Input, Card, Alert } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import useAuth from './Auth.hook';
 
 export default function AuthUi() {
-  const auth = useAuth();
+  const {login, error} = useAuth();
   const navigate = useNavigate();
 
   const onFinish = async (values: { Username: string; Password: string }) => {
-    await auth?.login(values.Username, values.Password);
+    await login(values.Username, values.Password);
     navigate('/');
   };
 
   return (
-    <Card title="Iniciar sesión" style={{ width: 300, margin: 'auto' }}>
+    <Card title="Iniciar sesión" style={{ width: 300, margin: 'auto', marginTop: '100px' }}>
+      {error && <Alert title={error} type="error" showIcon style={{ marginBottom: '16px' }} />}
       <Form onFinish={onFinish}>
-        <Form.Item name="username" rules={[{ required: true }]}>
+        <Form.Item name="Username" rules={[{ required: true }]}>
           <Input placeholder="Usuario" />
         </Form.Item>
 
-        <Form.Item name="password" rules={[{ required: true }]}>
+        <Form.Item name="Password" rules={[{ required: true }]}>
           <Input.Password placeholder="Contraseña" />
         </Form.Item>
 
