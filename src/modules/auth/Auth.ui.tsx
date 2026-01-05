@@ -1,6 +1,6 @@
 import { Button, Form, Input, Card, Alert } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import useAuth from './Auth.hook';
+import { useNavigate } from 'react-router';
+import useAuth from '../../providers/auth/Auth.hook';
 
 export default function AuthUi() {
   const {login, error} = useAuth();
