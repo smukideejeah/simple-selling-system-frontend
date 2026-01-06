@@ -3,6 +3,7 @@ import type IApi from "./IApi";
 import env from "../config/env";
 import type IStorage from "../storage/IStorage";
 import HTTPError from "./HTTPError";
+import type { AuthCredentials } from "../types/AuthCredentials";
 
 
 export default class Api implements IApi{
@@ -14,14 +15,14 @@ export default class Api implements IApi{
     }
 
     private headers(){
-        const token = this.storage.get("token");
+        const creds = this.storage.getObject<AuthCredentials>("auth");
         return {
             'Content-Type': 'application/json',
-            ...(token && {'Authorization': `Bearer ${token}`})
+            ...(creds && {'Authorization': `Bearer ${creds.token}`})
         };
     }
 
-    async get<T,U>(path: string, params?: Record<string, U>): Promise<T> {
+    async get<T,U = undefined>(path: string, params?: U): Promise<T> {
         try{
             const response = await axios.request({
                 method: 'GET',

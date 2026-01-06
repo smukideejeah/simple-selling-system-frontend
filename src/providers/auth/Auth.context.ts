@@ -7,6 +7,7 @@ type AuthContextType = {
     error: string | null;
     login: (Username: string, Password: string) => Promise<void>;
     logout: () => void;
+    loading: boolean;
 };
 const AuthContext = createContext<AuthContextType | null>(null);
 

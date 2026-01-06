@@ -1,4 +1,5 @@
 import type IApi from "../../shared/http/IApi";
+import type { AuthCredentials } from "../../shared/types/AuthCredentials";
 
 type LoginResponse = {
     token: string;
@@ -20,5 +21,9 @@ export default class{
 
     async login(data: Credentials): Promise<LoginResponse>{
         return this.api.post<LoginResponse, Credentials>('/auth', data);
+    }
+
+    async verify() {
+        return this.api.get<Omit<AuthCredentials, 'token'>>('/auth/me');
     }
 }

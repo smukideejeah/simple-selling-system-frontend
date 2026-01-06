@@ -6,7 +6,11 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     const [darkMode, setDarkMode] = useState<boolean>(false);
 
     const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
+        setDarkMode(prev => {
+
+            return !prev;
+        });
+
     };
 
     return (
