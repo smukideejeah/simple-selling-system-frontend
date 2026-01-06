@@ -18,6 +18,7 @@ export function useReports() {
                 description: 'Ha ocurrido un error al intentar cargar el reporte de los 10 productos más vendidos.',
                 placement: 'topRight',
             });
+            console.error('Error loading top 10 products report:', error);
         }finally{
             setLoading(false);
         }
