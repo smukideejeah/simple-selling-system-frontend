@@ -46,7 +46,7 @@ export default function ProductsUI() {
                 {title: 'Precio', dataIndex: 'Price', key: 'Price'},
                 {title: 'Medida', dataIndex: 'Measure', key: 'Measure'},
                 {title: 'Activo', dataIndex: 'IsActive', key: 'IsActive', render: (value) => value ? 'Sí' : 'No'},
-                {title: 'Descuento', dataIndex: 'Discount', key: 'Discount', render: (value) => value ? (value.isActive ? `Sí (${value.percentage}%)` : 'No') : 'No' },
+                {title: 'Descuento', dataIndex: 'Discount', key: 'Discount', render: (value) => value ? (value.IsActive ? `Sí (${value.Percentage}%)` : 'No') : 'No' },
                 {title: 'Acciones', key: 'actions', fixed: true, width: 100, render: (_, record) => <>
                     <Space>
                         <Tooltip title="Ver producto">
@@ -96,7 +96,6 @@ export default function ProductsUI() {
             handleCancel={hook.closeProductsForm}
             loading={hook.loading}
             onSubmit={async (data) => {
-                console.log('Submitting product form...', data, hook.editingProduct?.ID);
                 await hook.saveProduct(data, hook.editingProduct?.ID);
             }}
             initialValues={hook.editingProduct}

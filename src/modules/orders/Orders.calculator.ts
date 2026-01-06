@@ -5,17 +5,18 @@ export function calculateOrderTotal(items: OrderCart[], now = new Date()): numbe
     let unitDiscount = 0;
 
     const discount = i.product.Discount;
-    if (discount?.isActive) {
+    if (discount?.IsActive) {
       if (
-        now >= new Date(discount.startDate) &&
-        now <= new Date(discount.endDate)
+        now >= new Date(discount.StartDate) &&
+        now <= new Date(discount.EndDate)
       ) {
-        unitDiscount = (i.item.UnitPrice * discount.percentage) / 100;
+        unitDiscount = (i.item.UnitPrice * discount.Percentage) / 100;
       }
     }
 
     const subTotal = i.item.UnitPrice * i.item.Qty;
     const totalDiscount = unitDiscount * i.item.Qty;
+    console.log('subTotal, totalDiscount', subTotal, totalDiscount, unitDiscount);
     const totalItem = subTotal - totalDiscount;
 
     return acc + totalItem;

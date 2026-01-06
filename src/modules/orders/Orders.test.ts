@@ -38,10 +38,10 @@ describe('calculateOrderTotal', () => {
             product: {
                 ID: 'p1',
                 Discount: {
-                    isActive: true,
-                    percentage: 10,
-                    startDate: '2025-01-01',
-                    endDate: '2025-01-31',
+                    IsActive: true,
+                    Percentage: 10,
+                    StartDate: '2025-01-01',
+                    EndDate: '2025-01-31',
                 },
             }
         } as any];

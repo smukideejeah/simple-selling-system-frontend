@@ -59,7 +59,7 @@ export default function OrdersUI() {
                         {title: 'Medida', dataIndex: 'Measure', key: 'Measure'},
                         {title: 'Activo', dataIndex: 'IsActive', key: 'IsActive', render: (value) => value ? 'Sí' : 'No'},
                         {title: 'Descuento', dataIndex: 'Discount', key: 'Discount', render: (value) => {
-                            return value ? (value.isActive ? `Sí (${value.percentage}%)` : 'No') : 'No';
+                            return value ? (value.IsActive ? `Sí (${value.Percentage}%)` : 'No') : 'No';
                         }},
                     ]}
                 />
@@ -106,7 +106,6 @@ export default function OrdersUI() {
                                     min={1}
                                     value={item.item.Qty}
                                     onChange={(value) =>{
-                                        //onQuantityChange(item.item.ProductID, Number(value))
                                         hook.updateQuantity(item.item.ProductID, Number(value));
                                     }}
                                 />
@@ -116,9 +115,6 @@ export default function OrdersUI() {
                                 <Typography.Text>${item.item.UnitPrice.toFixed(2)}</Typography.Text>
                                 </Col>
 
-                                <Col span={4} style={{ textAlign: "right" }}>
-                                <Typography.Text strong>${(item.item.TotalItem).toFixed(2)}</Typography.Text>
-                                </Col>
                                 <Col span={3} style={{ textAlign: "right" }}>
                                     <Button
                                         danger

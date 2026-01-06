@@ -1,4 +1,4 @@
-import { DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, ShoppingCartOutlined, SunOutlined, TagOutlined } from "@ant-design/icons";
+import { BookOutlined, DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, ShoppingCartOutlined, SunOutlined, TagOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme, type MenuProps } from "antd";
 import useAuth from "../providers/auth/Auth.hook";
 import { useNavigate } from "react-router";
@@ -32,6 +32,10 @@ export default function AppLayout(){
                 key: '/discounts',
                 icon: <TagOutlined />,
                 label: 'Descuentos',
+            }, {
+                key: '/reports',
+                icon: <BookOutlined />,
+                label: 'Reportes',
             }] : []), 
         ...(role === "VENDEDOR" ? [{
                 key: '/orders',
