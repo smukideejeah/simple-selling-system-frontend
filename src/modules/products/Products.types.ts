@@ -7,10 +7,10 @@ export type Product = {
     Measure: 'KILO' | 'LITRO' | 'UNIDAD';
     IsActive: boolean;
     Discount?: {
-        percentage: number;
-        isActive: boolean;
-        startDate: Date;
-        endDate: Date;
+        Percentage: number;
+        IsActive: boolean;
+        StartDate: Date;
+        EndDate: Date;
     } | null;
 };
 
