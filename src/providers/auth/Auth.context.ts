@@ -1,0 +1,15 @@
+import { createContext } from "react";
+
+type AuthContextType = {
+    token: string | null;
+    userId: string | null;
+    role: string | null;
+    error: string | null;
+    login: (Username: string, Password: string) => Promise<void>;
+    logout: () => void;
+    loading: boolean;
+};
+const AuthContext = createContext<AuthContextType | null>(null);
+
+
+export default AuthContext;

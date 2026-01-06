@@ -1,0 +1,24 @@
+
+import DiscountsApi from "../../modules/discounts/Discounts.api";
+import { DiscountsService } from "../../modules/discounts/Discounts.service";
+import LoginApi from "../../modules/login/Login.api";
+import LoginService from "../../modules/login/Login.service";
+import OrdersApi from "../../modules/orders/Orders.api";
+import { OrdersService } from "../../modules/orders/Orders.service";
+import ProductsApi from "../../modules/products/Products.api";
+import { ProductsService } from "../../modules/products/Products.service";
+import ReportsApi from "../../modules/reports/Reports.api";
+import ReportsService from "../../modules/reports/Reports.service";
+import Api from "../http/Api";
+import type IApi from "../http/IApi";
+import type IStorage from "../storage/IStorage";
+import LocalStorage from "../storage/LocalStorage";
+
+const storage: IStorage = new LocalStorage();
+const api: IApi = new Api(storage);
+
+export const authService = new LoginService(new LoginApi(api), storage);
+export const productsService = new ProductsService(new ProductsApi(api));
+export const discountsService = new DiscountsService(new DiscountsApi(api));
+export const ordersService = new OrdersService(new OrdersApi(api));
+export const reportsService = new ReportsService(new ReportsApi(api));
