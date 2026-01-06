@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import AuthUi from "../modules/login/Login.ui";
 import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "./AppLayout";
+import ProductsUI from "../modules/products/Products.ui.page";
 
 const Router = createBrowserRouter([
     {
@@ -12,7 +13,7 @@ const Router = createBrowserRouter([
         path: "/",
         element: <ProtectedRoute><AppLayout /></ProtectedRoute>,
         children: [
-            {path: "products", element: <div>Productos</div>}
+            {path: "products", element: <ProductsUI />},
         ]
     }
 ]);

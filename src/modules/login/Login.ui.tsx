@@ -15,11 +15,11 @@ export default function AuthUi() {
     <Card title="Iniciar sesión" style={{ width: 300, margin: 'auto', marginTop: '100px' }}>
       {error && <Alert title={error} type="error" showIcon style={{ marginBottom: '16px' }} />}
       <Form onFinish={onFinish}>
-        <Form.Item name="Username" rules={[{ required: true }]}>
+        <Form.Item label="Usuario" name="Username" rules={[{ required: true, message: 'Por favor, ingrese su usuario' }]}>
           <Input placeholder="Usuario" />
         </Form.Item>
 
-        <Form.Item name="Password" rules={[{ required: true }]}>
+        <Form.Item label="Contraseña" name="Password" rules={[{ required: true, message: 'Por favor, ingrese su contraseña' }]}>
           <Input.Password placeholder="Contraseña" />
         </Form.Item>
 

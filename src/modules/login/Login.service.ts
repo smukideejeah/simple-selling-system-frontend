@@ -29,12 +29,20 @@ export default class {
         }
     }
 
-    logout(){
-        this.storage.remove("auth");
+    async verifyAuth(){
+        try{
+            await this.api.verify();
+            return this.storage.getObject<AuthCredentials>("auth");
+        }catch(error){
+            if(error instanceof HTTPError && error.status === 401){
+                this.storage.remove("auth");
+                throw new HTTPError(401, 'Token inválido');
+            }
+            throw error;
+        }
     }
 
-    isAuthenticated(): boolean {
-        const credentials = this.storage.getObject("auth");
-        return !!credentials;
+    logout(){
+        this.storage.remove("auth");
     }
 }
