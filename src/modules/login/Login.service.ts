@@ -31,8 +31,10 @@ export default class {
 
     async verifyAuth(){
         try{
-            await this.api.verify();
-            return this.storage.getObject<AuthCredentials>("auth");
+            if(this.storage.getObject<AuthCredentials>("auth")){
+                await this.api.verify();
+                return this.storage.getObject<AuthCredentials>("auth");
+            } else return null;
         }catch(error){
             if(error instanceof HTTPError && error.status === 401){
                 this.storage.remove("auth");

@@ -9,6 +9,10 @@ export default function ProtectedRoute({children}: {children: JSX.Element}){
     if(auth.loading) return <Spin fullscreen />;
     
     if(!auth?.token) return <Navigate to="/login" replace />;
+
+    
+
+
     
     return children;
 }

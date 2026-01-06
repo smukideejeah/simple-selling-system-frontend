@@ -1,4 +1,4 @@
-import { DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, SunOutlined, TagOutlined } from "@ant-design/icons";
+import { DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, ShoppingCartOutlined, SunOutlined, TagOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme, type MenuProps } from "antd";
 import useAuth from "../providers/auth/Auth.hook";
 import { useNavigate } from "react-router";
@@ -8,7 +8,7 @@ import useTheme from "../providers/theme/theme.hook";
 
 export default function AppLayout(){
     const [collapsed, setCollapsed] =  useState(false);
-    const {logout} = useAuth();
+    const {logout, role} = useAuth();
     const navigate = useNavigate();
     const {darkMode, toggleDarkMode} = useTheme();
 
@@ -23,16 +23,21 @@ export default function AppLayout(){
             icon: <DashboardOutlined onClick={() => setCollapsed(!collapsed)} />,
             label: 'Inicio', 
         },
-        {
-            key: '/products',
-            icon: <ProductOutlined />,
-            label: 'Productos',
-        },
-        {
-            key: '/discounts',
-            icon: <TagOutlined />,
-            label: 'Descuentos',
-        },
+        ...(role === "GESTOR" ? [{
+                key: '/products',
+                icon: <ProductOutlined />,
+                label: 'Productos',
+            },
+            {
+                key: '/discounts',
+                icon: <TagOutlined />,
+                label: 'Descuentos',
+            }] : []), 
+        ...(role === "VENDEDOR" ? [{
+                key: '/orders',
+                icon: <ShoppingCartOutlined />,
+                label: 'Ordenes',
+            }] : []),
         {
             key: 'logout',
             icon: <LogoutOutlined />,

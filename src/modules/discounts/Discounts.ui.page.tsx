@@ -41,7 +41,6 @@ export default function DiscountsUI() {
             scroll={{x:  'auto'}}
             pagination={false}
             columns={[
-                {title: 'ID', dataIndex: 'ID', key: 'ID'},
                 {title: 'Fecha de Inicio', dataIndex: 'ValidFrom', key: 'ValidFrom', render: (_, record) => dayjs(record.ValidFrom).format('DD/MM/YYYY')},
                 {title: 'Fecha de Fin', dataIndex: 'ValidTo', key: 'ValidTo', render: (_, record) => dayjs(record.ValidTo).format('DD/MM/YYYY')},
                 {title: 'Producto', dataIndex: 'ProductID', key: 'ProductID', render: (_, record) => `${record.Product.Code} - ${record.Product.Name}`},

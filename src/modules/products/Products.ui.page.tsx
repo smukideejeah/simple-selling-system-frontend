@@ -40,7 +40,6 @@ export default function ProductsUI() {
             scroll={{x:  'auto'}}
             pagination={false}
             columns={[
-                {title: 'ID', dataIndex: 'ID', key: 'ID'},
                 {title: 'Código', dataIndex: 'Code', key: 'Code'},
                 {title: 'Nombre', dataIndex: 'Name', key: 'Name'},
                 {title: 'Descripción', dataIndex: 'Description', key: 'Description'},
