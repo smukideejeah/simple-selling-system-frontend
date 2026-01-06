@@ -1,4 +1,4 @@
-import { DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, SunOutlined } from "@ant-design/icons";
+import { DashboardOutlined, LogoutOutlined, MoonOutlined, ProductOutlined, SunOutlined, TagOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme, type MenuProps } from "antd";
 import useAuth from "../providers/auth/Auth.hook";
 import { useNavigate } from "react-router";
@@ -27,7 +27,13 @@ export default function AppLayout(){
             key: '/products',
             icon: <ProductOutlined />,
             label: 'Productos',
-        },{
+        },
+        {
+            key: '/discounts',
+            icon: <TagOutlined />,
+            label: 'Descuentos',
+        },
+        {
             key: 'logout',
             icon: <LogoutOutlined />,
             label: 'Cerrar sesión',
