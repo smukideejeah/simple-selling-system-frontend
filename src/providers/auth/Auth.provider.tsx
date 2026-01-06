@@ -19,7 +19,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
                     setToken(creds.token);
                     setUserId(creds.userId);
                     setRole(creds.role);
-                }else throw new HTTPError(401, "No autenticado");
+                }
                 setLoading(false);
                 setError(null);
             }catch(error){

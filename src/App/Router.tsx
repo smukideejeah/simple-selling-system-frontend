@@ -4,6 +4,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "./AppLayout";
 import ProductsUI from "../modules/products/Products.ui.page";
 import DiscountsUI from "../modules/discounts/Discounts.ui.page";
+import ProtectedRoleRoute from "./ProtectedRoleRoute";
+import OrdersUI from "../modules/orders/Orders.ui.page";
 
 const Router = createBrowserRouter([
     {
@@ -14,8 +16,9 @@ const Router = createBrowserRouter([
         path: "/",
         element: <ProtectedRoute><AppLayout /></ProtectedRoute>,
         children: [
-            {path: "products", element: <ProductsUI />},
-            {path: "discounts", element: <DiscountsUI />},
+            {path: "products", element: <ProtectedRoleRoute allowedRoles={["GESTOR"]}><ProductsUI /></ProtectedRoleRoute>},
+            {path: "discounts", element: <ProtectedRoleRoute allowedRoles={["GESTOR"]}><DiscountsUI /></ProtectedRoleRoute>},
+            {path: "orders", element: <ProtectedRoleRoute allowedRoles={["VENDEDOR"]}><OrdersUI /></ProtectedRoleRoute>},
         ]
     }
 ]);
